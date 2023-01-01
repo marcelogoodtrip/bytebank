@@ -1,5 +1,7 @@
 ﻿using bytebank.Contas;
 using bytebank.Funcionarios;
+using bytebank.Parceria;
+using bytebank.SistemaInterno;
 using bytebank.Titular;
 using bytebank.Utilitario;
 using System.Runtime.CompilerServices;
@@ -92,44 +94,92 @@ using System.Runtime.CompilerServices;
 //Console.WriteLine("Novo Salário do Funcionário: " + func1.Salario);
 //Console.WriteLine("Novo Salário do Diretor: " + dir1.Salario);
 
-Diretor diretor = new Diretor("000.000.000-00");
-diretor.Nome = "Marcelo Diretor";
-Console.WriteLine(diretor.Nome);
-Console.WriteLine(diretor.Cpf);
-Console.WriteLine(diretor.Salario);
-Console.WriteLine("Bonificação: "+diretor.GetBonificacao());
-diretor.AumentarSalario();
-Console.WriteLine("Aumento Salarial: "+diretor.Salario);
-Console.WriteLine();
+//Diretor diretor = new Diretor("000.000.000-00");
+//diretor.Nome = "Marcelo Diretor";
+//Console.WriteLine(diretor.Nome);
+//Console.WriteLine(diretor.Cpf);
+//Console.WriteLine(diretor.Salario);
+//Console.WriteLine("Bonificação: "+diretor.GetBonificacao());
+//diretor.AumentarSalario();
+//Console.WriteLine("Aumento Salarial: "+diretor.Salario);
+//Console.WriteLine();
 
-Designer designer = new Designer("111.111.111-11");
-designer.Nome = "Marcelo Designer";
-Console.WriteLine(designer.Nome);
-Console.WriteLine(designer.Cpf);
-Console.WriteLine(designer.Salario);
-Console.WriteLine("Bonificação: " + designer.GetBonificacao());
-designer.AumentarSalario();
-Console.WriteLine("Aumento Salarial: " + designer.Salario);
-Console.WriteLine();
+//Designer designer = new Designer("111.111.111-11");
+//designer.Nome = "Marcelo Designer";
+//Console.WriteLine(designer.Nome);
+//Console.WriteLine(designer.Cpf);
+//Console.WriteLine(designer.Salario);
+//Console.WriteLine("Bonificação: " + designer.GetBonificacao());
+//designer.AumentarSalario();
+//Console.WriteLine("Aumento Salarial: " + designer.Salario);
+//Console.WriteLine();
 
-GerenteDeContas gerente = new GerenteDeContas("222.222.222-22");
-gerente.Nome = "Marcelo Gerente";
-Console.WriteLine(gerente.Nome);
-Console.WriteLine(gerente.Cpf);
-Console.WriteLine(gerente.Salario);
-Console.WriteLine("Bonificação: " + gerente.GetBonificacao());
-gerente.AumentarSalario();
-Console.WriteLine("Aumento Salarial: " + gerente.Salario);
-Console.WriteLine();
+//GerenteDeContas gerente = new GerenteDeContas("222.222.222-22");
+//gerente.Nome = "Marcelo Gerente";
+//Console.WriteLine(gerente.Nome);
+//Console.WriteLine(gerente.Cpf);
+//Console.WriteLine(gerente.Salario);
+//Console.WriteLine("Bonificação: " + gerente.GetBonificacao());
+//gerente.AumentarSalario();
+//Console.WriteLine("Aumento Salarial: " + gerente.Salario);
+//Console.WriteLine();
 
-Auxiliar auxiliar = new Auxiliar("333.333.333-33");
-auxiliar.Nome = "Marcelo Auxiliar";
-Console.WriteLine(auxiliar.Nome);
-Console.WriteLine(auxiliar.Cpf);
-Console.WriteLine(auxiliar.Salario);
-Console.WriteLine("Bonificação: " + auxiliar.GetBonificacao());
-auxiliar.AumentarSalario();
-Console.WriteLine("Aumento Salarial: " + auxiliar.Salario);
-Console.WriteLine();
+//Auxiliar auxiliar = new Auxiliar("333.333.333-33");
+//auxiliar.Nome = "Marcelo Auxiliar";
+//Console.WriteLine(auxiliar.Nome);
+//Console.WriteLine(auxiliar.Cpf);
+//Console.WriteLine(auxiliar.Salario);
+//Console.WriteLine("Bonificação: " + auxiliar.GetBonificacao());
+//auxiliar.AumentarSalario();
+//Console.WriteLine("Aumento Salarial: " + auxiliar.Salario);
+//Console.WriteLine();
+
+UsarSistema();
+
+void CalcularBonificacao()
+{
+    GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
+
+    Designer designer = new Designer("000.000.000-00");
+    designer.Nome = "Marcelo Designer";
+
+    Diretor diretor = new Diretor("111.111.111-11");
+    diretor.Nome = "Marcelo Diretor";
+
+    Auxiliar auxiliar = new Auxiliar("74581");
+    auxiliar.Nome = "Marcelo Auxiliar";
+
+    GerenteDeContas gerente = new GerenteDeContas("222.222.222-22");
+    gerente.Nome = "Marcelo Gerente";
+
+    gerenciador.Registrar(gerente);
+    gerenciador.Registrar(auxiliar);
+    gerenciador.Registrar(diretor);
+    gerenciador.Registrar(designer);
+
+    Console.WriteLine("Total de Bonificação = " + gerenciador.TotalBonificacao);
+
+    //Funcionario pedro = new Funcionario("123456",852);
+}
+
+void UsarSistema()
+{
+    SistemaInterno sistema = new SistemaInterno();
+
+    Diretor diretor = new Diretor("000.000.000-00");
+    diretor.Nome = "Marcelo Moura";
+    diretor.Senha = "root";
+
+    GerenteDeContas gerente = new GerenteDeContas("963741");
+    gerente.Nome = "Laryssa Moura";
+    gerente.Senha = "321";
+
+    ParceiroComercial parceiro = new ParceiroComercial();
+    parceiro.Senha = "999";
+
+    sistema.Logar(diretor, "root");
+    sistema.Logar(gerente, "963");
+    sistema.Logar(parceiro, "999");
+}
 
 //Console.ReadKey();

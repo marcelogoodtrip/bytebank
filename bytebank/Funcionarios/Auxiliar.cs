@@ -6,21 +6,19 @@ using System.Threading.Tasks;
 
 namespace bytebank.Funcionarios
 {
-    internal class Auxiliar:Funcionario
+    public class Auxiliar : Funcionario
     {
+        public Auxiliar(string cpf) : base(cpf,2000)
+        {
+        }
         public override double GetBonificacao()
         {
-            return this.Salario + (this.Salario *= 0.20);
+            return this.Salario * 0.2;
         }
 
         public override void AumentarSalario()
         {
-            this.Salario *= 1.10;
-        }
-
-        public Auxiliar(string cpf) : base(cpf, 2000)
-        {
-            Console.WriteLine("Criando um Auxiliar");
+            this.Salario *= 1.1;
         }
     }
 }

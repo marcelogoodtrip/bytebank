@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace bytebank.Funcionarios
 {
-    internal class Designer:Funcionario
+    public class Designer : Funcionario
     {
+        public Designer(string cpf) : base(cpf,3000)
+        {
+        }
+
         public override double GetBonificacao()
         {
             return this.Salario * 0.17;
@@ -16,11 +20,6 @@ namespace bytebank.Funcionarios
         public override void AumentarSalario()
         {
             this.Salario *= 1.11;
-        }
-
-        public Designer(string cpf) : base(cpf, 3000)
-        {
-            Console.WriteLine("Criando um Designer.");
         }
     }
 }
